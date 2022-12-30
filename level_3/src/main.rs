@@ -33,7 +33,7 @@ fn item_priority(item: char) -> Result<i32> {
 }
 
 /// Splits a string into two rucksack halves
-/// cannot use a RuckSet directly to split, as element order needs to be preserved
+/// cannot use a RuckSack directly to split, as element order needs to be preserved
 fn ruckset_halves(rucksack: &String) -> Result<Rucksacks, Error> {
     let mut rucksacks: Rucksacks = vec![];
     let (first_half, second_half) = rucksack.split_at(rucksack.len() / 2);

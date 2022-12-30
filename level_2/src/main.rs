@@ -2,6 +2,7 @@ extern crate log;
 
 use anyhow::Result;
 use aoc_lib::file_reading::FileReaderString;
+use env_logger::Env;
 use log::{debug, info};
 use regex::Regex;
 
@@ -56,7 +57,7 @@ fn solve() -> Result<(i32, i32), anyhow::Error> {
 }
 
 fn main() -> Result<()> {
-    env_logger::builder().init();
+    env_logger::init_from_env(Env::default().filter_or("RUST_LOG", "info"));
     let (puzzle_answer_1, puzzle_answer_2) = solve()?;
     info!(
         "\npuzzle answer 2.1: {}\npuzzle answer 2.2: {}",

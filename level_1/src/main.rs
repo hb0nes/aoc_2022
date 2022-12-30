@@ -4,7 +4,8 @@ use std::num::IntErrorKind;
 
 use anyhow::Result;
 use aoc_lib::file_reading::FileReaderInt;
-use log::{info, LevelFilter};
+use env_logger::Env;
+use log::{info};
 
 const PUZZLE_NAME: &str = "input";
 
@@ -34,7 +35,7 @@ fn solve() -> Result<(i32, i32), anyhow::Error> {
 }
 
 fn main() -> Result<()> {
-    env_logger::builder().filter(None, LevelFilter::Info).init();
+    env_logger::init_from_env(Env::default().filter_or("RUST_LOG", "info"));
     let (puzzle_answer_1, puzzle_answer_2) = solve()?;
     info!("\npuzzle answer 1.1: {}\npuzzle answer 1.2: {}", puzzle_answer_1, puzzle_answer_2);
     Ok(())
